@@ -1,0 +1,33 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Add Item</h4>
+  <button type="button" class="close" (click)="closeModal()" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form>
+    <div class="form-group">
+      <label for="itemName"> Enter Item Name </label>
+      <input #addInput type="text" id="itemName" name="name" required />
+      <div *ngFor="let item of listItems">
+        <input
+          [checked]="listItem === item?.id"
+          (click)="onListItemSelection(item?.id)"
+          type="radio"
+          id="{{ item?.id }}"
+          name="{{ item?.name }}"
+          value="{{ item?.id }}"
+          checked
+        />
+        <label for="listItemA">
+          {{ item?.name }}
+        </label>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button (click)="addItem()" type="button" class="btn btn-outline-dark">
+    Save
+  </button>
+</div>

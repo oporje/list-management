@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "list-management"
+  "defaultProject": "list-management",
+  "cli": {
+    "analytics": false
+  }
 }

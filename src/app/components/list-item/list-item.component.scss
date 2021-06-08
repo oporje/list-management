@@ -1,0 +1,12 @@
+.item-container {
+  min-height: 2rem;
+  border: 2px solid gray;
+  text-align: center;
+  border-right: none;
+  border-left: none;
+
+  &.isSelected {
+    background-color: gray;
+    opacity: 0.8;
+  }
+}

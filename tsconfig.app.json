@@ -11,5 +11,9 @@
   ],
   "include": [
     "src/**/*.d.ts"
-  ]
+  ],
+  "paths": {
+    "@store/*": ["app/store/*"],
+    "@models/*": ["app/models/*"]
+  }
 }
