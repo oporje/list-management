@@ -2,16 +2,24 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.6.
 
-## Development server
+## To Run
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1) Clone the repo
+2) Run `npm install`
+3) Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+## Further improvement --  unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 
+User Ngrx store to maintain the state of the applications
+
+Components used
+
+1) List container - Container component responsible to get/set state to perform Add, Move, Delete operations
+2) List Item - presentational component responsible to render the list item
+3) Add item - modal component to provide options before add selection
+4) Delete item - modal component to provide options before delete selection
