@@ -1,0 +1,42 @@
+<div class="main-list-container">
+  <!-- As per object tpl render list container or button container -->
+  <ng-container *ngFor="let section of sectionsList">
+    <ng-container
+      *ngTemplateOutlet="
+        section?.tplName === 'listContainerTpl'
+          ? listContainerTpl
+          : buttonContainerTpl;
+        context: { item: section }
+      "
+    >
+    </ng-container>
+  </ng-container>
+
+  <!-- List container Template -->
+  <ng-template #listContainerTpl let-listItemConfig="item">
+    <section class="list-section">
+      <div class="list-label">
+        {{ listItemConfig?.name }}
+      </div>
+      <ng-container *ngFor="let item of listItemConfig?.data">
+        <!-- List item presentational component -->
+        <app-list-item
+          [listItem]="item"
+          (onItemSelection)="onListItemSelection($event)"
+        >
+        </app-list-item>
+      </ng-container>
+    </section>
+  </ng-template>
+
+  <!-- Button container Template -->
+  <ng-template #buttonContainerTpl let-buttonListData="item">
+    <section class="button-section">
+      <ng-container *ngFor="let action of buttonListData?.data">
+        <button (click)="callAction(action)">
+          {{ action?.name }}
+        </button>
+      </ng-container>
+    </section>
+  </ng-template>
+</div>

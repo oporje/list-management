@@ -1,0 +1,32 @@
+.main-list-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  min-width: 30rem;
+  min-height: 30rem;
+
+  .list-section {
+    min-width: 10rem;
+    margin-top: 2rem;
+    border: 2px solid gray;
+
+    .list-label {
+      text-align: center;
+      background-color: #9c9cd4;
+    }
+  }
+
+
+
+  .button-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 2rem;
+    margin-left: 2rem;
+
+    button {
+      margin: 1rem;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+<div
+  [ngClass]="{
+    'isSelected': isSelected
+  }"
+  class="item-container"
+  (click)="itemClicked(listItem)">
+  {{ listItem?.item?.name }}
+</div>

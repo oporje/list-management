@@ -1,0 +1,29 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Delete Item</h4>
+  <button type="button" class="close" (click)="closeModal()" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div>Select List to delete from:</div>
+  <form>
+    <div class="form-group">
+      <div *ngFor="let item of listItems" class="checkbox-container">
+        <input
+          type="checkbox"
+          name="{{ item?.name }}"
+          id="{{ item?.id }}"
+          [checked]="item?.isChecked"
+          [value]="item?.id"
+          (change)="onCheck(item)"
+        />
+        <label for="listItemA"> {{ item?.name }} </label>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button (click)="deleteItem()" type="button" class="btn btn-outline-dark">
+    Save
+  </button>
+</div>
