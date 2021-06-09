@@ -4,7 +4,6 @@ import { Component,
   OnInit,
   Input,
   Output,
-  SimpleChanges,
   EventEmitter } from '@angular/core';
 import { ListItemConfig } from '../../models/list-item';
 
@@ -21,13 +20,9 @@ export class ListItemComponent implements OnInit {
   @Input('listItem') listItem: ListItemConfig;
   @Output('onItemSelection') onItemSelection = new EventEmitter();
 
-  ngOnInit(): void { console.log(this.isSelected); }
+  ngOnInit(): void { }
 
-  ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
-  }
-
-  itemClicked(clickedItem) {
+  itemClicked(clickedItem): void {
     if (clickedItem) {
       this.isSelected = !this.isSelected;
       const selectedItem = Object.assign({}, clickedItem, {isSelected: this.isSelected});
