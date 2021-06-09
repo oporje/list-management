@@ -14,11 +14,9 @@ export class AddItemModalComponent implements OnInit {
   @Input('listItems') listItems;
   constructor(public modalService: NgbModal) { }
 
-  ngOnInit(): void {
-    console.log('opened');
-  }
+  ngOnInit(): void {}
 
-  addItem() {
+  addItem(): void {
     this.onItemAdd.emit({
       name: this.inputName.nativeElement.value,
       listId: this.listItem
@@ -26,11 +24,11 @@ export class AddItemModalComponent implements OnInit {
     this.closeModal();
   }
 
-  closeModal() {
+  closeModal(): void {
     this.modalService.dismissAll();
   }
 
-  onListItemSelection(selectedListItem: string) {
+  onListItemSelection(selectedListItem: string): void {
     this.listItem = selectedListItem;
   }
 
