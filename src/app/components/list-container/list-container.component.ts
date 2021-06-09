@@ -1,6 +1,6 @@
 // container component deals with Store
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/app.state';
 import * as fromListSelector from '../../store/list.selectors';
@@ -18,7 +18,7 @@ import { ListCheckbox } from '../../models/list-checkbox-model';
   templateUrl: './list-container.component.html',
   styleUrls: ['./list-container.component.scss'],
 })
-export class ListContainerComponent implements OnInit {
+export class ListContainerComponent implements OnInit, OnDestroy {
   public ngDestroyed$ = new Subject();
 
   listActions: Array<ListActions> = [
@@ -165,7 +165,7 @@ export class ListContainerComponent implements OnInit {
     );
   }
 
-  moveItem(action) {
+  moveItem(action): void {
     // dispatch move Item action with params
 
     if (!this.selectedItems.length) {
@@ -190,12 +190,13 @@ export class ListContainerComponent implements OnInit {
     const deletedListItems = this.getAvailableListItems();
     // open delete modal and on confirmation dispatch delete action
     const deletedList = this.sectionsList.filter((section) => {
-      if (section.type === 'list')
+      if (section.type === 'list') {
         return {
           id: section.id,
           name: section.name,
           isChecked: false,
         };
+      }
     });
 
     if (!this.selectedItems.length) {

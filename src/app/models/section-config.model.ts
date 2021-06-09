@@ -5,5 +5,5 @@ export interface SectionConfig {
   tplName: string;
   id: string | number;
   type: string;
-  data: Array<ListItemConfig> | Array<ListActions>
+  data: Array<ListItemConfig> | Array<ListActions>;
 }
