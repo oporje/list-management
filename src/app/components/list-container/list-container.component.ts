@@ -11,7 +11,8 @@ import { AddItemModalComponent } from '../add-item-modal/add-item-modal.componen
 import { DeleteItemModalComponent } from '../delete-item-modal/delete-item-modal.component';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-
+import { SectionConfig } from '../../models/section-config.model';
+import { ListCheckbox } from '../../models/list-checkbox-model';
 @Component({
   selector: 'app-list-container',
   templateUrl: './list-container.component.html',
@@ -37,7 +38,7 @@ export class ListContainerComponent implements OnInit {
     { name: 'Delete', id: 'deleteItem' },
   ];
 
-  sectionsList = [
+  sectionsList: Array<SectionConfig> = [
     {
       name: 'List A',
       tplName: 'listContainerTpl',
@@ -115,7 +116,7 @@ export class ListContainerComponent implements OnInit {
     }
   }
 
-  getAvailableListItems() {
+  getAvailableListItems(): Array<ListCheckbox> {
     // get available list items dynamically
     return this.sectionsList
       .filter((section) => section.type === 'list')
