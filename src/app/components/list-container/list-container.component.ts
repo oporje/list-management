@@ -67,7 +67,7 @@ export class ListContainerComponent implements OnInit {
     this.subscribeToListItems();
   }
 
-  subscribeToListItems() {
+  subscribeToListItems(): void {
     this.store
       .select(fromListSelector.selectListState)
       .pipe(takeUntil(this.ngDestroyed$))
@@ -78,7 +78,7 @@ export class ListContainerComponent implements OnInit {
       });
   }
 
-  callAction(action) {
+  callAction(action): void {
     switch (action.id) {
       case 'addItem':
         this.addItem();
@@ -98,7 +98,7 @@ export class ListContainerComponent implements OnInit {
     }
   }
 
-  onListItemSelection(event) {
+  onListItemSelection(event): void {
     // maintain selected items
     const item = event.item;
     if (item.isSelected) {
@@ -128,7 +128,7 @@ export class ListContainerComponent implements OnInit {
       });
   }
 
-  addItem() {
+  addItem(): void {
     // open add item modal and on confirmation dispatch add action
     const addedLists = this.getAvailableListItems();
     const addModalRef = this.modalService.open(AddItemModalComponent);
@@ -139,7 +139,7 @@ export class ListContainerComponent implements OnInit {
     });
   }
 
-  dispatchAddAction(item) {
+  dispatchAddAction(item): void {
     const listId = item.listId;
     let currentLength = 0;
     this.sectionsList.filter((section) =>
@@ -185,7 +185,7 @@ export class ListContainerComponent implements OnInit {
     );
   }
 
-  deleteItem() {
+  deleteItem(): void {
     const deletedListItems = this.getAvailableListItems();
     // open delete modal and on confirmation dispatch delete action
     const deletedList = this.sectionsList.filter((section) => {
@@ -211,7 +211,7 @@ export class ListContainerComponent implements OnInit {
     });
   }
 
-  dispatchDeleteAction(listId, selectedItems) {
+  dispatchDeleteAction(listId, selectedItems): void {
     this.store.dispatch(
       new fromListActions.DeleteItem({
         selectedItems: selectedItems,
@@ -220,7 +220,7 @@ export class ListContainerComponent implements OnInit {
     );
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     // unsubscribe from selectors
     this.ngDestroyed$.next();
     this.ngDestroyed$.complete();
